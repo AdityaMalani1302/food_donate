@@ -74,7 +74,7 @@ if (isset($_POST['submit'])) {
 
     if ($query_run) {
       // Send email notification to admin
-      sendDonationNotification(
+      $emailSent = sendDonationNotification(
         $_SESSION['donor_name'],
         $emailid,
         $foodname,
@@ -83,6 +83,10 @@ if (isset($_POST['submit'])) {
         $district,
         $connection
       );
+      
+      if (!$emailSent) {
+        error_log("Failed to send donation notification email for donation by: " . $emailid);
+      }
       
       $_SESSION['success'] = "Food donation submitted successfully!";
       header("location:delivery.php");

@@ -1,30 +1,57 @@
 <?php
 // Email utility functions for food donation system
 require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require_once __DIR__ . '/../vendor/phpmailer/phpmailer/src/SMTP.php';
+require_once __DIR__ . '/../vendor/phpmailer/phpmailer/src/Exception.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 function getAdminEmail($connection) {
     $query = "SELECT email FROM admin LIMIT 1";
     $result = mysqli_query($connection, $query);
     if ($result && $row = mysqli_fetch_assoc($result)) {
+        error_log("Using admin email from database: " . $row['email']);
         return $row['email'];
     }
+    error_log("Using fallback admin email: " . ADMIN_EMAIL);
     return ADMIN_EMAIL; // Fallback to config value
 }
 
 function sendEmail($to, $subject, $message, $from = null) {
-    // Email headers
-    $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-    
-    if ($from) {
-        $headers .= "From: " . $from . "\r\n";
-        $headers .= "Reply-To: " . $from . "\r\n";
-    } else {
-        $headers .= "From: " . SYSTEM_EMAIL . "\r\n";
+    try {
+        $mail = new PHPMailer(true);
+        
+        // Server settings
+        $mail->isSMTP();
+        $mail->Host = SMTP_HOST;
+        $mail->SMTPAuth = true;
+        $mail->Username = SMTP_USERNAME;
+        $mail->Password = SMTP_PASSWORD;
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = SMTP_PORT;
+        
+        // Recipients
+        $mail->setFrom($from ? $from : SYSTEM_EMAIL);
+        $mail->addAddress($to);
+        if ($from) {
+            $mail->addReplyTo($from);
+        }
+        
+        // Content
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+        $mail->Body = $message;
+        $mail->AltBody = strip_tags($message);
+        
+        return $mail->send();
+    } catch (Exception $e) {
+        error_log("Email sending failed: " . $mail->ErrorInfo);
+        return false;
     }
-    
-    // Send email
-    return mail($to, $subject, $message, $headers);
 }
 
 function sendDonationNotification($donorName, $donorEmail, $foodName, $quantity, $category, $location, $connection) {
@@ -169,9 +196,12 @@ function sendDonationStatusNotification($donationId, $status, $connection) {
     $donation = $result->fetch_assoc();
 
     if (!$donation) {
+        error_log("Failed to find donation with ID: " . $donationId);
         return false;
     }
 
+    error_log("Sending status notification to donor: " . $donation['donor_email'] . " for donation ID: " . $donationId);
+    
     $subject = "Update on Your Food Donation";
     
     // Get current date and time in local timezone

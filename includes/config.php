@@ -4,20 +4,20 @@
 // Email Configuration
 define('SMTP_HOST', 'smtp.gmail.com');
 define('SMTP_PORT', 587);
-define('SMTP_USERNAME', getenv('SMTP_USERNAME')); // Will be set in hosting environment
-define('SMTP_PASSWORD', getenv('SMTP_PASSWORD')); // Will be set in hosting environment
-define('SYSTEM_EMAIL', getenv('SYSTEM_EMAIL')); // Will be set in hosting environment
-define('ADMIN_EMAIL', getenv('ADMIN_EMAIL')); // Will be set in hosting environment
+define('SMTP_USERNAME', 'adityamanalani1302@gmail.com'); // Replace with your email
+define('SMTP_PASSWORD', 'qmvb bkwr ozoe ffcs'); // Replace with your app password
+define('SYSTEM_EMAIL', 'adityamanalani1302@gmail.com'); // Replace with your email
+define('ADMIN_EMAIL', 'fooddonate12@gmail.com'); // Replace with admin email
 
 // Time Zone
 define('DEFAULT_TIMEZONE', 'Asia/Kolkata');
 
 // Site Configuration
 define('SITE_NAME', 'Food Donation System');
-define('SITE_URL', getenv('SITE_URL')); // Will be set based on hosting URL
+define('SITE_URL', 'http://localhost/food_donate'); // Your local development URL
 
 // Database Configuration
-define('DB_HOST', getenv('DB_HOST')); // Will be set by hosting provider
-define('DB_USER', getenv('DB_USER')); // Will be set by hosting provider
-define('DB_PASS', getenv('DB_PASS')); // Will be set by hosting provider
-define('DB_NAME', getenv('DB_NAME')); // Will be set by hosting provider 
+define('DB_HOST', 'localhost:3306');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_NAME', 'food_donate'); 

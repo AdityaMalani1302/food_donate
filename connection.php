@@ -1,25 +1,21 @@
 <?php
-// Load configuration from a separate file or environment variables
-$servername = "localhost";
+// Database connection configuration
+$servername = "localhost:3306";
 $username = "root";
 $password = "";
 $dbname = "food_donate";
 
-$connection = mysqli_init();
-mysqli_ssl_set($connection, NULL, NULL, NULL, NULL, NULL);
-mysqli_real_connect(
-    $connection,
-    getenv('DB_HOST'),
-    getenv('DB_USER'),
-    getenv('DB_PASS'),
-    getenv('DB_NAME'),
-    3306,
-    NULL,
-    MYSQLI_CLIENT_SSL
-);
+// Create connection
+$connection = new mysqli($servername, $username, $password, $dbname);
 
-if (!$connection) {
-    die("Connection failed: " . mysqli_connect_error());
+// Check connection
+if ($connection->connect_error) {
+    // Log the error (in a production environment)
+    error_log("Database connection failed: " . $connection->connect_error);
+    
+    // Show a generic error message
+    header('HTTP/1.1 500 Internal Server Error');
+    exit('Database connection error');
 }
 
 // Set the character set (recommended)

@@ -1,12 +1,14 @@
 {
     "functions": {
-        "api/*.php": {
+        "*.php": {
             "runtime": "vercel-php@0.6.0"
         }
     },
     "routes": [
-        { "src": "/(.*)\\.php$", "dest": "/api/$1.php" },
-        { "src": "/(.*)", "dest": "/api/$1" }
+        { "src": "/(css|js|img)/(.*)$", "dest": "/$1/$2" },
+        { "src": "/vendor/(.*)", "dest": "/vendor/$1" },
+        { "src": "/(.*)\\.php$", "dest": "/$1.php" },
+        { "src": "/(.*)", "dest": "/index.php" }
     ],
     "env": {
         "SMTP_HOST": "smtp.gmail.com",
