@@ -1,0 +1,8 @@
+{
+    "name": "food-donate/website",
+    "description": "Food Donation Website",
+    "type": "project",
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
+}

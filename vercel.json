@@ -1,0 +1,16 @@
+{
+    "functions": {
+        "api/*.php": {
+            "runtime": "vercel-php@0.6.0"
+        }
+    },
+    "routes": [
+        { "src": "/(.*)\\.php$", "dest": "/api/$1.php" },
+        { "src": "/(.*)", "dest": "/api/$1" }
+    ],
+    "env": {
+        "SMTP_HOST": "smtp.gmail.com",
+        "SMTP_PORT": "587",
+        "APP_ENV": "production"
+    }
+} 

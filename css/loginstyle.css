@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+body{
+    background-image: url("");
+    background-color: #06C167;
+    font-family: 'Poppins', sans-serif;
+}
+
+.logo{
+    text-align: center;
+    font-size: 18px;
+    color: black;
+}
+
+.regform{ 
+    width: 430px;
+    background-color: white;
+    padding: 20px 20px 20px 50px;
+    margin: 20px auto;
+    color: black;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.regformf{
+    width: 460px;
+    background-color: white;
+    margin: 20px auto;
+    color: black;
+    padding: 20px 20px 20px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+#heading{
+    margin-top: 0;
+    color: black;
+    text-align: center;
+    font-size: 22px;
+}
+
+.form1{
+    width:400px;
+}
+
+.input input{
+    width:100%;
+    font-size: 16px;
+    border:.5px solid #63707E;
+    border-radius: 6px;
+    padding:14px 15px;
+    box-sizing:border-box;
+    margin:5px 0px 15px;
+    color:black;
+}
+
+input:focus{
+    background-color:white;
+}
+
+button{
+    background-color:black;
+    font-size: 16px;
+    color: white;
+    margin-top: 20px;
+    padding: 14px 16px;
+    border-radius: 8px;
+    border: .5px solid black;
+    width: 100%;
+}
+
+.radio .value{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.radio input{
+    transform: scale(1.1);
+}
+
+button:hover{
+    color: #eeeeee;
+    transform: scale(.98);
+}
+
+.regform .signin-up{
+    font-size: 20px; 
+    text-align: center;
+}
+
+.password{
+    position: relative;
+}
+
+.password input{
+    width:100%;
+    font-size:20px;
+    border:.5px solid #63707E;
+    border-radius: 6px;
+    padding:14px 15px;
+    box-sizing:border-box;
+    margin:5px 0px 15px;
+    color:black;
+}
+
+.fa-eye-slash{
+    position:absolute;
+    top:28%;
+    right: 4%;
+    cursor: pointer;
+}
+
+.bi{
+    position:absolute;
+    top:28%;
+    right: 4%;
+    cursor: pointer;
+}
+
+.uil{
+    top:50%;
+    bottom: 4%;
+    right: 4%;
+    cursor: pointer; 
+    position: absolute;
+    transform: translateY(-50%);
+    color: #595757;
+    font-size: 23px;
+    transition: all 0.2s ease;
+}
+
+.image-radio-group input[type="radio"] {
+    display: none;
+}
+
+.image-radio-group label {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.image-radio-group label img {
+    border: 2px solid transparent;
+}
+
+.image-radio-group input[type="radio"]:checked + label img {
+    border-color:rgb(46, 44, 44);
+    border-radius: 10px;}
+
+.image-radio-group img{
+    width: 300px;
+}
+
+.error {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 5px;
+    padding: 8px;
+    border-radius: 4px;
+    background-color: rgba(220, 53, 69, 0.1);
+}
+
+.success {
+    color: #28a745;
+    font-size: 14px;
+    margin-top: 5px;
+    padding: 8px;
+    border-radius: 4px;
+    background-color: rgba(40, 167, 69, 0.1);
+}
+
+/* Forgot Password Link */
+.forgot-password {
+    text-align: right;
+    margin: 10px 0;
+}
+
+.forgot-password a {
+    color: #06C167;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.forgot-password a:hover {
+    color: #048f4c;
+    text-decoration: underline;
+}
+
+/* Additional Styles for Forgot Password Page */
+.forgot-password-info {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.back-to-login {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.back-to-login a {
+    color: #06C167;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.back-to-login a:hover {
+    color: #048f4c;
+    text-decoration: underline;
+}

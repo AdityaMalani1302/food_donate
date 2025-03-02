@@ -1,0 +1,43 @@
+CREATE TABLE `admin` (
+  `Aid` int(11) NOT NULL AUTO_INCREMENT,
+  `name` text NOT NULL,
+  `email` varchar(60) NOT NULL UNIQUE,
+  `password` text NOT NULL,
+  `location` text NOT NULL,
+  `address` text NOT NULL,
+  PRIMARY KEY (`Aid`)
+);
+
+CREATE TABLE `login` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` text NOT NULL,
+  `email` varchar(60) NOT NULL,
+  `password` text NOT NULL,
+  `gender` text NOT NULL,
+  PRIMARY KEY (`email`),
+  UNIQUE KEY (`id`)
+);
+
+CREATE TABLE `food_donations` (
+  `Fid` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(60) NOT NULL,
+  `food` varchar(50) NOT NULL,
+  `type` text NOT NULL,
+  `category` text NOT NULL,
+  `quantity` text NOT NULL,
+  `date` datetime DEFAULT current_timestamp(),
+  `address` text NOT NULL,
+  `location` varchar(50) NOT NULL,
+  `phoneno` varchar(25) NOT NULL,
+  PRIMARY KEY (`Fid`)
+);
+
+CREATE TABLE `user_feedback` (
+  `feedback_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `message` text DEFAULT NULL,
+  PRIMARY KEY (`feedback_id`)
+) AUTO_INCREMENT=7;
+
